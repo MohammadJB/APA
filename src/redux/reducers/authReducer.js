@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, loading: true }
             break;
         case USER_LOGIN_SUCCEED:
-            return { ...state, error:'',valid:true }
+            return { ...state, error:'',valid:true, loading:false }
             break;
         case USER_LOGIN_FAILED:
             return {
