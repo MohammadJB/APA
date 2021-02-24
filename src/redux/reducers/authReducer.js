@@ -4,43 +4,39 @@ import {
     USER_LOGIN_ATTEMPT,
     USER_LOGIN_SUCCEED,
     USER_LOGIN_FAILED,
-    NoConnection
+    NO_CONNECTION,
+    USER_LOGOUT,
 } from '../actions/types';
 const INITIAL_STATE = {
     username: '',
     password: '',
     loading: false,
     error: '',
-    valid: false
+    accessToken: ''
 }
 export default (state = INITIAL_STATE, action) => {
-    console.log(action);
     switch (action.type) {
         case USERNAME_CHANGED:
-            return { ...state, username: action.payLoad }
-            break;
+            return { ...state, username: action.payLoad };
         case PASSWORD_CHANGED:
-            return { ...state, password: action.payLoad }
-            break;
+            return { ...state, password: action.payLoad };
         case USER_LOGIN_ATTEMPT:
-            return { ...state, loading: true }
-            break;
+            return { ...state, loading: true };
         case USER_LOGIN_SUCCEED:
-            return { ...state, error:'',valid:true, loading:false }
-            break;
+            return { ...state, error:'',accessToken:action.payLoad, loading:false };
         case USER_LOGIN_FAILED:
             return {
                 ...state,
                 loading: false,
                 password: '',
                 error: 'نام کاربری و گذرواژه خود را به درستی وارد نمایید'
-            }
-            break;
-        case NoConnection:
+            };
+        case NO_CONNECTION:
             return { ...state, 
                 loading: false, 
-                error:'خطا در برقراری ارتباط. لطفا مجددا تلاش فرمایید'}
-            break;
+                error:'خطا در برقراری ارتباط. لطفا مجددا تلاش فرمایید'};
+        case USER_LOGOUT:
+            return INITIAL_STATE;
         default:
             return state;
     }

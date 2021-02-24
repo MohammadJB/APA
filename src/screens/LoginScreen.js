@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { usernameChanged, passwordChanged, userLogin } from '../redux/actions/index';
 
 class LoginScreen extends React.Component {
+  static navigationOptions = { header:null };
   onUsernameChanged(text) {
     this.props.usernameChanged(text);
   }
@@ -99,7 +100,8 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: '#fff',
-    fontSize: 20
+    fontSize: 20,
+    fontFamily : 'IRANSans-Bold'
   },
   textInputStyle: {
     width: '90%',
@@ -107,10 +109,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ccc',
-    padding: 10,
+    padding: 8,
     alignItems: 'flex-start',
     color: '#aaa',
     backgroundColor: '#222',
+    fontFamily:'IRANSans'
   },
   buttonStyle: {
     width: '90%',
@@ -122,11 +125,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonTextStyle: {
-    color: '#ccc'
+    color: '#ccc',
+    fontFamily:'IRANSans'
   },
   forgetButtonStyle: {
     color: '#bbb',
-    marginTop: 15
+    marginTop: 15,
+    fontFamily:'IRANSans'
   },
   signUpStyle: {
     marginTop: 40,
@@ -139,7 +144,8 @@ const styles = StyleSheet.create({
     paddingLeft: 16
   },
   signUpTextStyle: {
-    color: '#aaa'
+    color: '#aaa',
+    fontFamily:'IRANSans'
   }
 });
 const mapStateToProps = state => {
